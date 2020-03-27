@@ -6,9 +6,5 @@ class WelcomeController < ApplicationController
     # render html: "hi"
     # /app/views/welcome/index.html.erb
   end
-  def login
-  end
-  def create
-  end
 
 end
