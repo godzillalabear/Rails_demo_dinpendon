@@ -14,7 +14,9 @@ class UsersController < ApplicationController
       #save sucessfully
 
       #todo#encoding password
-      #todo#help user login
+      #help user login
+      session[:go2login] = @user.email
+      #email should be unique
 
       redirect_to "/"
     else
@@ -22,6 +24,11 @@ class UsersController < ApplicationController
       render :sign_up
     end
 
+  end
+
+  def logout
+    session[:go2login] = nil
+    redirect_to root_path
   end
 
 
