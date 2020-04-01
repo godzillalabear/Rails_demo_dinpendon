@@ -9,24 +9,17 @@ class UsersController < ApplicationController
   def register
     @user = User.new(clean_user)
 
-    if clean_user[:password] == clean_user[:password_confirm]
-      
-      #add new user
-      if @user.save
-        #save sucessfully
+    #add new user
+    if @user.save
+      #save sucessfully
 
-        #todo#encoding password
-        #todo#help user login
+      #todo#encoding password
+      #todo#help user login
 
-        redirect_to "/"
-      else
-        #fail to save
-        render :sign_up
-      end
-
+      redirect_to "/"
     else
+      #fail to save
       render :sign_up
-      # redirect_to '/sign_up'
     end
 
   end
@@ -37,6 +30,6 @@ class UsersController < ApplicationController
   def clean_user
     params.require(:user).permit( :email, 
                                   :password, 
-                                  :password_confirm)
+                                  :password_confirmation)
   end
 end
