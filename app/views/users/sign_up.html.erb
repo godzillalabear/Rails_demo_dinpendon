@@ -3,8 +3,18 @@
 
 <h1>User Sign Up</h1>
 
-<%=	form_for(User.new, url: '/sign_up', method: 'post') do |f| %>
+<%=	form_for(@user, url: '/sign_up', method: 'post') do |f| %>
 
+	<!-- show error hint -->
+	<% if @user.errors.any? %>
+		<ul>
+			<% @user.errors.full_messages.each do |message| %>
+			<li> <%= message %></li>
+			<% end %>	
+		</ul>
+	<% end %>
+
+	<!-- email, password, password_confirm form -->
 	<div>
 		<%= f.label :email, "Your Email:"%> 
 		<%= f.text_field :email %>
