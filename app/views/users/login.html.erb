@@ -1,14 +1,22 @@
 <!-- login.html.erb -->
 
 <h1>User Login</h1>
-<form action="/login" method="post">
+
+<%= form_for(@user, url: login_path, method: 'post') do |f| %>
 	<div>
-		Your Email: <input type="email" name="Your Email">
+		<%= f.label :email, "Your Email:"%> 
+		<%= f.text_field :email %>
+	</div>
+
+	<div>
+		<%= f.label :password, "Your Password:"%> 
+		<%= f.password_field :password %>
+		
 	</div>
 	<div>
-		Your Password: <input type="password" name="Your Password">
+		<%= f.submit  "Login"%>
 	</div>
-	<div>
-		<input type="submit" value="go!">
-	</div>
-</form>
+
+<% end %>
+
+

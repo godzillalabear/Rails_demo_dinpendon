@@ -1,9 +1,22 @@
 class UsersController < ApplicationController
   def login
+    @user = User.new
   end
 
   def sign_up
     @user = User.new
+  end
+
+  def sign_in
+    #lookup database find exist user
+    user = User.find_by(email:  clean_user[:email],
+                        password:  clean_user[:password])
+    if user
+      session[:go2login] = user.email
+      redirect_to root_path
+    else
+      redirect_to login_path
+    end
   end
 
   def register
