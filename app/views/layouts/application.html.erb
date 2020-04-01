@@ -12,15 +12,10 @@
   </head>
 
   <body>
-    <% if session[:go2login] %>
-      <%= session[:go2login] %> |
-      <%= link_to "logout",logout_path, method: 'delete' %>
-    <% else %>
-      <a href="/sign_up"> sign up</a>
-      <p style="display: inline"> | </p>
-      <a href="/login"> login </a>
-    <% end %>
+    <%= render "shared/navbar" %>
 
     <%= yield %>
+
+    <%= render "shared/footer" %>
   </body>
 </html>
