@@ -3,3 +3,12 @@
 <h1>Your Order</h1>
 
 <%= link_to "Add", new_item_path %>
+
+<ul>
+  <% @items.each do |item| %>
+    <li>
+      <%= item.name %> | 
+      <%= link_to "Delete", item_path(item.id), method: 'delete', data: {confirm: "Do you really want to delete?"} %>
+    </li>
+  <% end %>
+</ul>
